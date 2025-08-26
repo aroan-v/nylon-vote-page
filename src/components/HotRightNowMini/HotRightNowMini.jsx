@@ -36,11 +36,6 @@ function HotRightNowMini() {
   const baselineTime = useDataStore((state) => state.baselineTime)
   const countdown = useVoteStore((state) => state.countdown)
 
-  console.log('lastApiUpdate', lastApiUpdate)
-  console.log('isLoading', isLoading)
-
-  console.log('allParticipantsData', allParticipantsData)
-
   // 🔥 local state to toggle
   const [showTopOnly, setShowTopOnly] = React.useState(false)
 
@@ -107,8 +102,6 @@ function HotRightNowMini() {
 export default HotRightNowMini
 
 function Header({ lastSnapshotDate, lastApiUpdate, countdown = '' }) {
-  console.log('header', lastApiUpdate)
-
   return <p className="pt-0 text-center italic">Tracking votes gained every 2 mins.</p>
 
   return (

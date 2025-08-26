@@ -2,6 +2,7 @@
 import React from 'react'
 import { useNylonData } from '@/data/initializeNylonData'
 import { useRecordedVotes } from '@/store/useRecordedVotes'
+import PasswordPage from '../PasswordPage'
 
 function ClientWrapper({ children }) {
   useNylonData()
@@ -19,7 +20,11 @@ function ClientWrapper({ children }) {
     return () => window.removeEventListener('message', handleMessage)
   }, [addVote])
 
-  return <>{children}</>
+  return (
+    <>
+      <PasswordPage>{children}</PasswordPage>
+    </>
+  )
 }
 
 export default ClientWrapper
