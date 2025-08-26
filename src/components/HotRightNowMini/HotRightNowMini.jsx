@@ -67,15 +67,7 @@ function HotRightNowMini() {
         />
       </div> */}
 
-      {isLoading ? (
-        <HeaderSkeleton />
-      ) : (
-        <Header
-          lastApiUpdate={lastApiUpdate}
-          lastSnapshotDate={baselineTime}
-          countdown={countdown}
-        />
-      )}
+      <Header lastApiUpdate={lastApiUpdate} lastSnapshotDate={baselineTime} countdown={countdown} />
 
       {/* Loading skeletons */}
       {isLoading &&

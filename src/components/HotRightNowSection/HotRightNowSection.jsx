@@ -41,11 +41,7 @@ function HotRightNowSection() {
 
   return (
     <SectionContainer className="min-w-[350px] border-none">
-      {hasData ? (
-        <Header lastApiUpdate={lastApiUpdate} lastSnapshotDate={lastSnapshotDate} />
-      ) : (
-        <HeaderSkeleton />
-      )}
+      <Header lastApiUpdate={lastApiUpdate} lastSnapshotDate={lastSnapshotDate} />
 
       {isLoading &&
         GENERAL_DETAILS.candidateNames.map((_, index) => <HotCardSkeleton key={index} />)}
