@@ -17,7 +17,7 @@ export default function VotingSection() {
         <Button onClick={decrement} variant="outline">
           -
         </Button>
-        <span className="px-3 font-medium">{(scale * 100).toFixed(0)}%</span>
+        <span className="px-3 font-bold text-cyan-400">{(scale * 100).toFixed(0)}%</span>
         <Button onClick={increment} variant="outline">
           +
         </Button>
@@ -41,10 +41,6 @@ export default function VotingSection() {
           Trying to vote again too early will{' '}
           <span className="font-bold text-red-500">reset the cooldown</span>. Hands off completely,
           or use a different browser.
-        </p>
-        <p>
-          Your votes on the server are safe, but clearing browser data will reset your personal vote
-          counter 😢
         </p>
       </div>
     </section>

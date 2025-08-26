@@ -35,7 +35,7 @@ export default function VoteStats({}) {
   const totalRecordedVotes = useRecordedVotes((state) => state.totalRecordedVotes)
 
   return (
-    <Card className="h-[350px] w-full max-w-sm rounded-xl border-2 border-sky-400 bg-none shadow-md">
+    <Card className="h-[350px] w-full max-w-sm gap-4 rounded-xl border-2 border-sky-400 bg-none shadow-md">
       {/* Header */}
       <CardHeader className="flex flex-col items-center justify-center gap-2">
         <div className="mx-auto w-[150px]">
@@ -54,7 +54,7 @@ export default function VoteStats({}) {
       <CardContent className="flex w-full gap-4 text-center">
         {/* Daily Votes */}
         <div className="border-outline bg-card flex flex-1 flex-col items-center gap-1 rounded-lg border p-3">
-          <HeartIcon size={28} weight="fill" className="text-red-500" />
+          <HeartIcon size={28} weight="fill" className="text-sky-400" />
           <p className="mt-2 text-xl font-semibold">
             <FlashingSpan key={dailyRecordedVotes}>
               {dailyRecordedVotes.toLocaleString()}
@@ -77,8 +77,13 @@ export default function VoteStats({}) {
 
       {/* Footer */}
       <CardFooter className="justify-center opacity-75">
-        <p className="text-center text-sm italic">
-          {'Your stats may look different in different browsers.'}
+        <p className="text-center text-xs italic">
+          {'Your stats may look different in different browsers.'} <br />{' '}
+          <span className="font-bold text-rose-500">
+            {' '}
+            Clearing browser cache / data will reset this!{' '}
+          </span>
+          {"(But your votes are safe on NYLON's server)"}
         </p>
       </CardFooter>
     </Card>
