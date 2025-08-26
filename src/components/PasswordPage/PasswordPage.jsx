@@ -19,8 +19,6 @@ export default function PasswordPage({ children }) {
       const data = await res.json()
       setServerPassword(data.password)
 
-      console.log('data', data)
-
       // 2. Check if user already has valid auth in localStorage
       const storedPassword = localStorage.getItem('auth_password')
       if (storedPassword && storedPassword === data.password) {
