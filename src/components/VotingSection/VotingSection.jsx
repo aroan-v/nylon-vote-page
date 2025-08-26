@@ -31,10 +31,22 @@ export default function VotingSection() {
         <PollEmbed scale={scale} />
         <PollEmbed scale={scale} />
       </div>
-      <p className="text-s p-4 text-center">
-        If there are no math questions, switch to a different browser or{' '}
-        <span className="font-bold text-teal-400">wait for a full minute</span>
-      </p>
+      <div className="space-y-3 p-4 text-center text-sm">
+        <p>
+          If there are no math questions, switch to a different browser{' '}
+          <span className="font-bold text-amber-500">(e.g., Chrome, Firefox, Safari)</span> or{' '}
+          <span className="font-bold text-teal-400">wait for a full minute</span>.
+        </p>
+        <p>
+          Trying to vote again too early will{' '}
+          <span className="font-bold text-red-500">reset the cooldown</span>. Hands off completely,
+          or use a different browser.
+        </p>
+        <p>
+          Your votes on the server are safe, but clearing browser data will reset your personal vote
+          counter 😢
+        </p>
+      </div>
     </section>
   )
 }
