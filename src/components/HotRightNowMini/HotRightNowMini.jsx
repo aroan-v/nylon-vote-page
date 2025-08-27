@@ -94,7 +94,9 @@ function HotRightNowMini() {
 export default HotRightNowMini
 
 function Header({ lastSnapshotDate, lastApiUpdate, countdown = '' }) {
-  return <p className="pt-0 text-center italic">Tracking votes gained at random intervals.</p>
+  return (
+    <p className="pt-0 text-center text-sm italic">Tracking votes gained at random intervals.</p>
+  )
 
   return (
     <p className="p-6 pt-0 text-center italic">

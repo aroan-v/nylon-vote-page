@@ -35,7 +35,7 @@ export default function VoteStats({}) {
   const totalRecordedVotes = useRecordedVotes((state) => state.totalRecordedVotes)
 
   return (
-    <Card className="h-[350px] w-full max-w-sm gap-4 rounded-xl border-2 border-sky-400 bg-none shadow-md">
+    <Card className="h-[350px] w-full max-w-sm gap-4 overflow-y-scroll rounded-xl border-2 border-sky-400 bg-none shadow-md">
       {/* Header */}
       <CardHeader className="flex flex-col items-center justify-center gap-2">
         <div className="mx-auto w-[150px]">
@@ -47,7 +47,9 @@ export default function VoteStats({}) {
           />
         </div>
         <h2 className="text-lg font-bold">Boldest Breakout Star</h2>
-        <p className="text-md text-center">Votes add up — yours included. 🩵</p>
+        <p className="text-center text-xs font-bold">
+          Your vote is part of the story — it all adds up. 🩵
+        </p>
       </CardHeader>
 
       {/* Content / Stats */}
@@ -78,10 +80,10 @@ export default function VoteStats({}) {
       {/* Footer */}
       <CardFooter className="justify-center opacity-75">
         <p className="text-center text-xs italic">
-          Your stats may appear differently in other browsers. <br />
-          Clearing your browser cache or data will{' '}
-          <span className="font-bold text-rose-500"> reset these stats!</span> (Don’t worry—your
-          votes on NYLON’s server are safe.)
+          Stats may differ in other browsers. <br />
+          Clearing cache will <span className="font-bold text-rose-500">reset your stats</span>{' '}
+          <br />
+          (Though your votes on NYLON are safe).
         </p>
       </CardFooter>
     </Card>

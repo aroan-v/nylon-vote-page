@@ -4,7 +4,7 @@ import PollEmbed from '../PollEmbed'
 
 export default function VotingSection() {
   // State controlling scale for all PollEmbed instances
-  const [scale, setScale] = React.useState(1)
+  const [scale, setScale] = React.useState(0.3)
   const [refreshKey, setRefreshKey] = React.useState(Date.now())
 
   // Handlers with min/max limits
@@ -13,13 +13,16 @@ export default function VotingSection() {
 
   return (
     <section className="bg-neutral flex flex-col items-center justify-center gap-8">
-      <div className="flex w-full max-w-sm flex-col items-center justify-center gap-4 p-2">
+      <div className="flex w-full max-w-md flex-col items-center justify-center gap-4 p-2">
         {/* The main control panel container */}
 
         <p className="space-y-1 text-center text-sm font-semibold text-red-500">
           <span className="block">🚨 Please avoid refreshing the entire website frequently!</span>
           <span className="block font-bold text-teal-400">
             Instead, use the Refresh Polls 🔄 button below
+          </span>
+          <span className="block font-bold text-amber-400">
+            Use the zoom controls to change the size of the polls!
           </span>
         </p>
         <div className="flex items-center gap-4 rounded-xl bg-teal-800/30 p-4 shadow-2xl">
@@ -33,9 +36,14 @@ export default function VotingSection() {
             >
               -
             </Button>
-            <span className="min-w-[60px] text-center font-mono text-xl font-bold text-amber-400">
-              {(scale * 100).toFixed(0)}%
-            </span>
+            <div className="flex flex-col text-center">
+              <span className="min-w-[60px] text-center font-mono text-xs font-bold text-white">
+                Zoom
+              </span>
+              <span className="min-w-[60px] text-center font-mono text-xl font-bold text-white">
+                {(scale * 100).toFixed(0)}%
+              </span>
+            </div>
             <Button
               onClick={increment}
               variant="outline"
@@ -73,22 +81,27 @@ export default function VotingSection() {
         <PollEmbed remountKey={refreshKey + '-5'} scale={scale} />
       </div>
       <div className="bg-card/70 max-w-sm space-y-4 rounded-lg p-6 text-center text-sm shadow-lg">
-        <p>
-          If no math questions appear, try switching to a different browser{' '}
-          <span className="font-bold text-amber-500">
-            (e.g., Chrome, Firefox, Safari—not just tabs)
-          </span>{' '}
-          or <span className="font-bold text-teal-400">wait a full minute</span>.
-        </p>
-        <p>
-          Voting too early will <span className="font-bold text-red-500">reset your cooldown</span>.
-          <br />
-          Give it a full pause or try a different browser.
-        </p>
-        <p>
-          Still no math questions? Switch to your{' '}
-          <span className="font-bold text-nowrap text-purple-500">mobile data</span>.
-        </p>
+        <h2 className="text-2xl font-semibold">FAQ</h2>
+        <ul className="list-disc space-y-4 pl-5 text-left text-sm">
+          <li>
+            If no math questions appear, try switching to a different browser{' '}
+            <span className="font-bold text-amber-500">
+              (e.g., Chrome, Firefox, Safari—not just tabs)
+            </span>{' '}
+            or <span className="font-bold text-teal-400">wait a full minute</span>.
+          </li>
+          <li>
+            Voting too early will{' '}
+            <span className="font-bold text-red-500">reset your cooldown</span>.
+            <br />
+            Give it a full pause or try a different browser.
+          </li>
+          <li>
+            Still no math questions? Switch to your{' '}
+            <span className="font-bold text-nowrap text-purple-500">mobile data</span>. Wait for 1 -
+            2 hours before going back to your Wifi.
+          </li>
+        </ul>
       </div>
     </section>
   )
