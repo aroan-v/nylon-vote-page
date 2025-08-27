@@ -15,12 +15,13 @@ export default function VotingSection() {
     <section className="bg-neutral flex flex-col items-center justify-center gap-8">
       <div className="flex w-full max-w-sm flex-col items-center justify-center gap-4 p-2">
         {/* The main control panel container */}
-        <p className="text-center text-sm text-white">
-          Change the size of the vote tabs <br /> to{' '}
-          <span className="font-bold text-amber-400">20%</span> -{' '}
-          <span className="font-bold text-amber-400">50%</span> on mobile.
-        </p>
 
+        <p className="space-y-1 text-center text-sm font-semibold text-red-500">
+          <span className="block">🚨 Please avoid refreshing the entire website frequently!</span>
+          <span className="block font-bold text-teal-400">
+            Instead, use the Refresh Polls 🔄 button below
+          </span>
+        </p>
         <div className="flex items-center gap-4 rounded-xl bg-teal-800/30 p-4 shadow-2xl">
           {/* Scale controls */}
 
@@ -64,7 +65,7 @@ export default function VotingSection() {
         </div>
       </div>
       {/* Poll embeds */}
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center">
         <PollEmbed remountKey={refreshKey + '-1'} scale={scale} />
         <PollEmbed remountKey={refreshKey + '-2'} scale={scale} />
         <PollEmbed remountKey={refreshKey + '-3'} scale={scale} />
