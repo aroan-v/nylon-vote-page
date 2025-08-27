@@ -13,7 +13,6 @@ function PageHeader({ className, children, content = {}, ...props }) {
           alt="Nylon Logo"
           width={3443}
           height={590}
-          unoptimized
         />
       </div>
       <h1 className="text-color-foreground text-center text-3xl leading-tight font-extrabold sm:text-4xl">

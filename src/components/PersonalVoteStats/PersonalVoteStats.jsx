@@ -44,7 +44,6 @@ export default function VoteStats({}) {
             alt="Nylon Logo"
             width={3443}
             height={590}
-            unoptimized
           />
         </div>
         <h2 className="text-lg font-bold">Boldest Breakout Star</h2>

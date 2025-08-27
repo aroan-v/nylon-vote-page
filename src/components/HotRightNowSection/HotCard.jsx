@@ -21,7 +21,6 @@ function HotCard({ isHot, votes, name, placement, src, gains }) {
             sizes="100px"
             className="h-full w-auto object-cover"
             priority
-            unoptimized
           />
         </div>
       )}

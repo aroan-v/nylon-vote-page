@@ -55,7 +55,6 @@ export default function PasswordPage({ children }) {
             alt="Nylon Logo"
             width={3443}
             height={590}
-            unoptimized
           />
         </div>
 
