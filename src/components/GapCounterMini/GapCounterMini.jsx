@@ -88,6 +88,7 @@ function GapCounterMini({ useImage, className }) {
                   sizes="(max-width: 640px) 120px, (max-width: 1024px) 160px, 200px"
                   className="h-[100px] w-auto object-contain sm:h-[125px] lg:h-[150px]"
                   priority
+                  unoptimized
                 />
               )}
             </div>

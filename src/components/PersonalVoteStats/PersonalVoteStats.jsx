@@ -44,6 +44,7 @@ export default function VoteStats({}) {
             alt="Nylon Logo"
             width={3443}
             height={590}
+            unoptimized
           />
         </div>
         <h2 className="text-lg font-bold">Boldest Breakout Star</h2>
@@ -78,12 +79,10 @@ export default function VoteStats({}) {
       {/* Footer */}
       <CardFooter className="justify-center opacity-75">
         <p className="text-center text-xs italic">
-          {'Your stats may look different in different browsers.'} <br />{' '}
-          <span className="font-bold text-rose-500">
-            {' '}
-            Clearing browser cache / data will reset this!{' '}
-          </span>
-          {"(But your votes are safe on NYLON's server)"}
+          Your stats may appear differently in other browsers. <br />
+          Clearing your browser cache or data will{' '}
+          <span className="font-bold text-rose-500"> reset these stats!</span> (Don’t worry—your
+          votes on NYLON’s server are safe.)
         </p>
       </CardFooter>
     </Card>

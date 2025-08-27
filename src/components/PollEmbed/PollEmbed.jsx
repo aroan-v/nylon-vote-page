@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function PollEmbed({ scale = 1 }) {
+export default function PollEmbed({ remountKey, scale = 1 }) {
   const iframeRef = React.useRef(null)
   const [size, setSize] = React.useState({ width: 0, height: 0 })
 
@@ -19,13 +19,14 @@ export default function PollEmbed({ scale = 1 }) {
 
   return (
     <div
-      className="overflow-hidden border border-sky-800"
+      className="overflow-hidden border bg-sky-800/50 bg-teal-800/30"
       style={{
         width: `${size.width * scale}px`,
         height: `${size.height * scale}px`,
       }}
     >
       <iframe
+        key={remountKey}
         ref={iframeRef}
         src="/poll.html"
         title="Poll"

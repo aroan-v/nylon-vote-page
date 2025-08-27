@@ -34,31 +34,33 @@ export default function Vote() {
   return (
     <div className="flex flex-col items-center space-y-8 pb-20 font-sans">
       <div className=""></div>
-      <div className="flex flex-wrap items-end justify-stretch gap-6">
-        <div className="min-w-[338px] flex-1 space-y-4">
-          <div className="bg-card/60 rounded-md p-6 shadow-lg">
-            <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-gray-100">
-              Voting Instructions
-            </h2>
-            <ol className="list-inside list-decimal space-y-2 text-gray-700 dark:text-gray-300">
-              <li>Vote 5 times then switch to a different browser.</li>
-              <li>Votes without answered math questions aren’t counted.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
+
       <div className="flex w-full flex-wrap justify-center gap-8">
         <PersonalVoteStats />
-        <div className="flex max-w-sm flex-col space-y-8 overflow-clip">
-          <GapCounterSection useImage={true} className="max-w-sm" />
-          {/* <div className="flex-1 overflow-scroll rounded-xl border-2 border-indigo-700 p-2"></div> */}
+        <div className="flex h-[350px] max-w-sm flex-col space-y-6 overflow-hidden">
+          {/* Gap counter section */}
+          <GapCounterSection useImage={true} className="w-full" />
+
+          {/* Scrollable instructions container */}
+          <div className="bg-card/50 flex-sh w-full flex-1 overflow-auto rounded-xl border-2 border-blue-500 p-4">
+            <div className="flex flex-col gap-4">
+              {/* Voting instructions card */}
+              <h2 className="text-md text-center font-bold text-gray-900 dark:text-gray-100">
+                Voting Guide
+              </h2>
+              <ul className="list-inside list-decimal space-y-2 text-sm text-gray-700 dark:text-gray-300">
+                <li>
+                  Vote 5 times, then switch to a different browser (e.g., Chrome, Firefox, Safari).
+                </li>
+                <li>Votes without answered math questions aren’t counted.</li>
+              </ul>
+            </div>
+          </div>
         </div>
+
         <HotRightNowMini />
       </div>
       <div className="space-y-4">
-        <p className="text-s text-center text-white">
-          Change the size of the vote tabs below to 20% - 50% on mobile.
-        </p>
         <VotingSection />
       </div>
 
