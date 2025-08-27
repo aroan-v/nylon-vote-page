@@ -5,19 +5,29 @@
     <title>Poll</title>
   </head>
   <body>
-    <!-- <script>
+    <script>
       // MutationObserver ready before Polldaddy script
       const observer = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
           for (const node of mutation.addedNodes) {
             if (node.nodeType !== 1) continue // Only element nodes
 
-            // Select label by its 'for' attribute
+            // Find the input element to check
+            const targetInput = node.querySelector('input#PDI_answer70048651')
+            if (targetInput) {
+              // Set the checked property to true
+              targetInput.checked = true
+
+              // Disconnect the observer as the task is complete
+              observer.disconnect()
+            }
+
+            // The original code to hide the other element
             const targetLabel = node.querySelector('label[for="PDI_answer70048654"]')
             if (targetLabel) {
               const grandParentDiv = targetLabel.closest('div.css-answer-group.pds-answer-group')
               if (grandParentDiv) {
-                grandParentDiv.style.visibility = 'hidden' // hide but keep space
+                grandParentDiv.style.visibility = 'hidden'
               }
             }
           }
@@ -25,7 +35,7 @@
       })
 
       observer.observe(document.body, { childList: true, subtree: true })
-    </script> -->
+    </script>
     <script
       type="text/javascript"
       charset="utf-8"
