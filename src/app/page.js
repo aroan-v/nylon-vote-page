@@ -80,7 +80,7 @@ export default function Vote() {
 
 function VoteDashboardCard() {
   return (
-    <div className="mx-auto max-w-sm overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg">
+    <div className="max-w-sm self-start overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg">
       {/* Header */}
       <div className="px-6 py-4 text-center">
         <h2 className="text-2xl font-bold">Nylon Boldest Breakout Star</h2>
