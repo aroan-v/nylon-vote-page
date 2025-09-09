@@ -5,6 +5,9 @@ import VotingSection from '@/components/VotingSection'
 import PersonalVoteStats from '@/components/PersonalVoteStats'
 import GapCounterSection from '@/components/GapCounterSection'
 import HotRightNowMini from '@/components/HotRightNowMini'
+import React from 'react'
+import ToggleButton from '@/components/ToggleButton'
+import TotalVotesSection from '@/components/TotalVotesSection'
 
 const instantFlash = keyframes`
   0% { color: white; }
@@ -30,6 +33,8 @@ export default function Vote() {
   const lastApiUpdate = useDataStore((state) => state.lastApiUpdate)
   const hasData = allParticipantsData && lastSnapshotDate && lastApiUpdate
   const recordedVotes = useDataStore((state) => state.recordedVotes)
+  const [showGapCounter, setShowGapCounter] = React.useState(false)
+  const [showHotRightNow, seShowHotRightNow] = React.useState(false)
 
   return (
     <div className="flex flex-col items-center space-y-8 pb-20 font-sans">
@@ -39,7 +44,7 @@ export default function Vote() {
         <PersonalVoteStats />
         <div className="flex h-[350px] max-w-sm flex-col space-y-6 overflow-hidden">
           {/* Gap counter section */}
-          <GapCounterSection useImage={true} className="w-full" />
+          <TotalVotesSection useImage={true} />
 
           {/* Scrollable instructions container */}
           <div className="bg-card/50 flex-sh w-full flex-1 overflow-auto rounded-xl border-2 border-blue-500 p-4">
@@ -58,13 +63,60 @@ export default function Vote() {
           </div>
         </div>
 
-        <HotRightNowMini />
+        <VoteDashboardCard />
+        {/* <HotRightNowMini /> */}
       </div>
-      <div className="space-y-4">
+      <div className="flex flex-col items-center space-y-4">
+        <div className="">
+          <ToggleButton />
+        </div>
         <VotingSection />
       </div>
 
       <Attribution />
+    </div>
+  )
+}
+
+function VoteDashboardCard() {
+  return (
+    <div className="mx-auto max-w-sm overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg">
+      {/* Header */}
+      <div className="px-6 py-4 text-center">
+        <h2 className="text-2xl font-bold">Nylon Boldest Breakout Star</h2>
+      </div>
+
+      {/* Body */}
+      <div className="space-y-4 px-6 pb-6 text-center">
+        <p className="text-base leading-relaxed">
+          Watch how our <span className="font-semibold">votes and momentum</span> rose and fell
+          throughout the journey — a look back at every step that led us to the final placements.
+        </p>
+
+        {/* CTA Button */}
+        <a
+          href="https://nylon-boldest-breakout-star-will.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 px-5 py-3 text-lg font-semibold text-black shadow-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,215,0,0.7)]"
+        >
+          View Dashboard
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="ml-2 h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M14 3h7m0 0v7m0-7L10 14"
+            />
+          </svg>
+        </a>
+      </div>
     </div>
   )
 }

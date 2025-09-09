@@ -7,7 +7,7 @@ function HotCard({ isHot, votes, name, placement, src, gains }) {
   return (
     <div
       className={cn(
-        `bg-card/60 relative flex h-[135px] w-full rounded-md sm:h-[170px] lg:flex-row ${isHot ? 'animate-pulse-glow border-red-500' : ''}`
+        `relative flex h-[135px] w-full rounded-md sm:h-[170px] lg:flex-row ${isHot ? 'bg-indigo-900/50' : 'bg-card/60'}}`
       )}
     >
       {/* Image Section */}
