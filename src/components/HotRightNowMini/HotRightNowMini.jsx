@@ -31,7 +31,7 @@ import { GENERAL_DETAILS } from '@/data/generalDetails'
 import { devLog } from '@/lib/logger'
 
 function HotRightNowMini() {
-  const isLoading = useDataStore((state) => state.isLoading)
+  const isLoading = useVoteStore((state) => state.isLoading)
   const lastApiUpdate = useDataStore((state) => state.lastApiUpdate)
   const baselineTime = useDataStore((state) => state.baselineTime)
   const processedData = useVoteStore((s) => s.processedData)
@@ -52,27 +52,25 @@ function HotRightNowMini() {
   const displayedData = showTopOnly ? (processedData ?? []).slice(0, 2) : (processedData ?? [])
 
   return (
-    <SectionContainer className="h-[350px] w-full max-w-sm justify-start overflow-scroll border-2 border-indigo-700 p-2">
+    <SectionContainer className="max-h-[400px] min-h-[350px] w-full max-w-sm justify-start overflow-scroll border-3 border-indigo-700 p-2">
       <Header lastApiUpdate={lastApiUpdate} lastSnapshotDate={baselineTime} />
 
       {/* Loading skeletons */}
-      {/* {isLoading &&
-        (showTopOnly
-          ? GENERAL_DETAILS.candidateNames?.slice(0, 2).map((_, i) => <HotCardSkeleton key={i} />)
-          : GENERAL_DETAILS.candidateNames?.map((_, i) => <HotCardSkeleton key={i} />))} */}
+      {isLoading && GENERAL_DETAILS.candidateNames?.map((_, i) => <HotCardSkeleton key={i} />)}
 
       {/* Participant cards */}
-      {processedData.map(({ name, src, votes, delta }, index) => (
-        <HotCardMini
-          key={name}
-          isHot={delta === greatestGainer && greatestGainer > 0 && !moreThanOneGainer}
-          name={name}
-          placement={index + 1}
-          src={src}
-          votes={votes}
-          gains={delta}
-        />
-      ))}
+      {!isLoading &&
+        processedData.map(({ name, src, votes, delta }, index) => (
+          <HotCardMini
+            key={name}
+            isHot={delta === greatestGainer && greatestGainer > 0 && !moreThanOneGainer}
+            name={name}
+            placement={index + 1}
+            src={src}
+            votes={votes}
+            gains={delta}
+          />
+        ))}
     </SectionContainer>
   )
 }

@@ -1,12 +1,16 @@
 import React from 'react'
 import NumberFlow, { continuous } from '@number-flow/react'
 import Spinner from '../Spinner'
-import { useDataStore } from '@/store/dataStore'
 import styled from 'styled-components'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
+import useVoteStore from '@/store/useVoteStore'
+import { GENERAL_DETAILS } from '@/data/generalDetails'
 
 const StyledWrapper = styled.div`
+  width: 100%;
+  max-width: 24rem;
+
   .card {
     --white: hsl(0, 0%, 100%);
     --black: hsl(240, 15%, 9%);
@@ -57,17 +61,18 @@ const StyledWrapper = styled.div`
 `
 
 function GapCounterSection({ useImage, className }) {
-  let isLoading = useDataStore((state) => state.isLoading)
-  let isPrimaryPlayerLeading = useDataStore((state) => state.isPrimaryPlayerLeading)
-  const primaryPlayerDisplayName = useDataStore((state) => state.primaryPlayerDisplayName)
-  const enemyPlayerDisplayName = useDataStore((state) => state.enemyPlayerDisplayName)
-  let gapBetweenPrimaryAndEnemy = useDataStore((state) => state.gapBetweenPrimaryAndEnemy)
+  let isLoading = useVoteStore((state) => state.isLoading)
+  let isPrimaryPlayerLeading = useVoteStore((state) => state.isPrimaryPlayerLeading)
+  let gapBetweenPrimaryAndEnemy = useVoteStore((state) => state.gapBetweenPrimaryAndEnemy)
+
+  const primaryPlayerDisplayName = GENERAL_DETAILS.primaryPlayerDisplayName
+  const enemyPlayerDisplayName = GENERAL_DETAILS.enemyPlayerDisplayName
 
   return (
     <StyledWrapper>
       <div
         className={cn(
-          'card p-6',
+          'card max-w-sm p-6',
           isLoading
             ? 'loading' // new case: while null/loading
             : isPrimaryPlayerLeading

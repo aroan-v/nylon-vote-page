@@ -27,7 +27,6 @@ export function useNylonData() {
   })
 
   const [localData, setLocalData] = React.useState(null)
-
   const index = React.useRef(0)
 
   React.useEffect(() => {
@@ -61,6 +60,15 @@ export function useNylonData() {
 
     return () => clearInterval(intervalId)
   }, [localData, setShallowState])
+
+  // Turn loading off
+  React.useEffect(() => {
+    if (!voteData) return
+
+    setShallowState({
+      isLoading: false,
+    })
+  }, [voteData, setShallowState])
 
   React.useEffect(() => {
     async function fetchData() {
@@ -122,6 +130,9 @@ function ProcessParticipantsData({ currentData, currentDelta }) {
 }
 
 function HandleData({ currentIndex, voteData, stateSetter }) {
+  const primaryPlayerDisplayName = GENERAL_DETAILS.primaryPlayerDisplayName
+  const enemyPlayerDisplayName = GENERAL_DETAILS.enemyPlayerDisplayName
+
   if (voteData) {
     devLog('voteData', voteData)
 
@@ -138,12 +149,22 @@ function HandleData({ currentIndex, voteData, stateSetter }) {
       targetIndex: Math.max(currentIndex - 1, 0),
     })
 
-    // Get the delta
-
+    // Get the delta (vote gained)
     const deltaData = CalculateDelta({
       previousData: previousParticipantData,
       currentData: currentParticipantData,
     })
+
+    // Get the delta between primary player and the enemy player
+    // Technically the enemy player shouldn't be locked to FYANG but since the Top 2 positions have been pretty much decided already, I've locked it in to her name.
+
+    const totalRawDelta =
+      Number(currentParticipantData[primaryPlayerDisplayName]) -
+      Number(currentParticipantData[enemyPlayerDisplayName])
+
+    devLog('totalRawDelta', totalRawDelta)
+    devLog('primaryPlayerDisplayName', primaryPlayerDisplayName)
+    devLog('currentParticipantData[Will]', currentParticipantData[primaryPlayerDisplayName])
 
     const currentTime = voteData.times[currentIndex]
 
@@ -154,6 +175,8 @@ function HandleData({ currentIndex, voteData, stateSetter }) {
 
     stateSetter({
       voteData,
+      isPrimaryPlayerLeading: totalRawDelta > 0,
+      gapBetweenPrimaryAndEnemy: Math.abs(totalRawDelta),
       processedData: ProcessParticipantsData({
         currentData: currentParticipantData,
         currentDelta: deltaData,

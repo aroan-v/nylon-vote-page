@@ -2,7 +2,7 @@ export const GENERAL_DETAILS = {
   primaryPlayerNameInApi: 'WILL ASHLEY',
   enemyPlayerNameInApi: 'candidateB',
   primaryPlayerDisplayName: 'WILL ASHLEY',
-  enemyPlayerDisplayName: 'candidateB',
+  enemyPlayerDisplayName: 'FYANG SMITH',
   candidateNames: [
     'WILL ASHLEY',
     'FYANG SMITH',

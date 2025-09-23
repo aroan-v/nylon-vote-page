@@ -4,6 +4,9 @@ import { create } from 'zustand'
 const useVoteStore = create((set) => ({
   countdown: 120,
   voteData: null,
+  isLoading: true,
+  isPrimaryPlayerLeading: false,
+  gapBetweenPrimaryAndEnemy: 0,
   processedData: [],
 
   setShallowState: (partial) =>

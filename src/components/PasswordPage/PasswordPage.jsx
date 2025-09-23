@@ -5,7 +5,7 @@ import { HEADER_CONTENT } from '@/data/header'
 import Spinner from '../Spinner'
 
 export default function PasswordPage({ children }) {
-  const [isAuthenticated, setIsAuthenticated] = React.useState(false)
+  const [isAuthenticated, setIsAuthenticated] = React.useState(true)
   const [passwordInput, setPasswordInput] = React.useState('')
   const [loading, setLoading] = React.useState(true)
   const [serverPassword, setServerPassword] = React.useState('')
@@ -13,6 +13,9 @@ export default function PasswordPage({ children }) {
   // 1. Fetch the current password from your backend (e.g., GitHub API)
   React.useEffect(() => {
     async function fetchPassword() {
+      setLoading(false)
+      return
+
       const res = await fetch(
         'https://raw.githubusercontent.com/aroan-v/nylon-biggest-breakout-star-cache/refs/heads/main/password.json'
       ) // replace with your real endpoint

@@ -36,6 +36,22 @@ export default function VotePage() {
   const [showHotRightNow, seShowHotRightNow] = React.useState(false)
 
   return (
+    <div className="r mx-auto grid justify-items-center gap-6 lg:max-w-7xl lg:grid-cols-3">
+      <PersonalVoteStats />
+      <div className="flex max-h-[400px] min-h-[350px] flex-col gap-6">
+        <GapCounterSection useImage={true} />
+        <VoteDashboardCard />
+      </div>
+
+      <HotRightNowMini />
+
+      <div className="col-span-full w-full">
+        <VotingSection />
+      </div>
+    </div>
+  )
+
+  return (
     <div className="flex flex-col items-center space-y-8">
       <div className="flex w-full flex-wrap justify-center gap-8">
         <PersonalVoteStats />
@@ -77,43 +93,37 @@ export default function VotePage() {
 
 function VoteDashboardCard() {
   return (
-    <div className="max-w-sm self-start overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-500 to-blue-500 text-white shadow-lg">
-      {/* Header */}
-      <div className="px-6 py-4 text-center">
-        <h2 className="text-2xl font-bold">Nylon Boldest Breakout Star</h2>
-      </div>
-
+    <div className="flex h-full max-w-sm flex-col justify-center gap-3 overflow-hidden rounded-xl bg-indigo-500/30 p-4 text-center text-white">
       {/* Body */}
-      <div className="space-y-4 px-6 pb-6 text-center">
-        <p className="text-base leading-relaxed">
-          Watch how our <span className="font-semibold">votes and momentum</span> rose and fell
-          throughout the journey — a look back at every step that led us to the final placements.
-        </p>
 
-        {/* CTA Button */}
-        <a
-          href="https://nylon-boldest-breakout-star-will.vercel.app"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 px-5 py-3 text-lg font-semibold text-black shadow-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,215,0,0.7)]"
+      <p className="text-sm leading-tight">
+        Watch how our <span className="font-semibold">votes and momentum</span> rose and fell
+        throughout the journey — a look back at every step that led us to the final placements.
+      </p>
+
+      {/* CTA Button */}
+      <a
+        href="https://nylon-boldest-breakout-star-will.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 px-2 py-2 text-lg font-semibold text-black shadow-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,215,0,0.7)]"
+      >
+        View Dashboard
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="ml-2 h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
         >
-          View Dashboard
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="ml-2 h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M14 3h7m0 0v7m0-7L10 14"
-            />
-          </svg>
-        </a>
-      </div>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M14 3h7m0 0v7m0-7L10 14"
+          />
+        </svg>
+      </a>
     </div>
   )
 }

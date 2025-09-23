@@ -69,12 +69,8 @@ function TotalVotesSection({ useImage, className }) {
     <StyledWrapper>
       <div
         className={cn(
-          'card p-6',
-          isLoading
-            ? 'loading' // new case: while null/loading
-            : isPrimaryPlayerLeading
-              ? 'leading'
-              : 'losing',
+          'card max-w-sm p-6',
+          isLoading ? 'loading' : isPrimaryPlayerLeading ? 'leading' : 'losing',
           className
         )}
       >
