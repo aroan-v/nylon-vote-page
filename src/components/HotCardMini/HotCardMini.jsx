@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 function HotCardMini({ isHot, votes, name, placement, src, gains }) {
+  const [numbers, setNumbers] = React.useState(0)
+
   return (
     <div
       className={cn(

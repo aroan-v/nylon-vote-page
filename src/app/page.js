@@ -11,12 +11,11 @@ import TotalVotesSection from '@/components/TotalVotesSection'
 
 const instantFlash = keyframes`
   0% { color: white; }
-  1% { color: cyan; } /* Instant jump to orange */
-  99% { color: cyan; } /* Hold orange for almost the entire duration */
-  100% { color: white; } /* Instant return to white */
+  1% { color: cyan; } 
+  99% { color: cyan; } 
+  100% { color: white; } 
 `
 
-// Create the styled component with the new keyframes and timing
 const FlashingSpan = styled.span`
   display: inline-block;
   font-weight: 700;
@@ -27,7 +26,7 @@ const FlashingSpan = styled.span`
   */
 `
 
-export default function Vote() {
+export default function VotePage() {
   const allParticipantsData = useDataStore((state) => state.allParticipantsData)
   const lastSnapshotDate = useDataStore((state) => state.lastSnapshotDate)
   const lastApiUpdate = useDataStore((state) => state.lastApiUpdate)
@@ -37,9 +36,7 @@ export default function Vote() {
   const [showHotRightNow, seShowHotRightNow] = React.useState(false)
 
   return (
-    <div className="flex flex-col items-center space-y-8 pb-20 font-sans">
-      <div className=""></div>
-
+    <div className="flex flex-col items-center space-y-8">
       <div className="flex w-full flex-wrap justify-center gap-8">
         <PersonalVoteStats />
         <div className="flex h-[350px] max-w-sm flex-col space-y-6 overflow-hidden">
@@ -64,7 +61,7 @@ export default function Vote() {
         </div>
 
         <VoteDashboardCard />
-        {/* <HotRightNowMini /> */}
+        <HotRightNowMini />
       </div>
       <div className="flex flex-col items-center space-y-4">
         <div className="">

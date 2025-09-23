@@ -2,7 +2,15 @@
 import { create } from 'zustand'
 
 const useVoteStore = create((set) => ({
-  countdown: 120, // start with 2 minutes (120s)
+  countdown: 120,
+  voteData: null,
+  processedData: [],
+
+  setShallowState: (partial) =>
+    set((state) => ({
+      ...state,
+      ...partial,
+    })),
   setCountdown: (value) => set({ countdown: value }),
 }))
 

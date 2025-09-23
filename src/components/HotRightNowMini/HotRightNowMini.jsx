@@ -28,63 +28,49 @@ const FlashingSpan = styled.span`
 
 import { useDataStore } from '@/store/dataStore'
 import { GENERAL_DETAILS } from '@/data/generalDetails'
+import { devLog } from '@/lib/logger'
 
 function HotRightNowMini() {
-  const allParticipantsData = useDataStore((state) => state.allParticipantsData)
   const isLoading = useDataStore((state) => state.isLoading)
   const lastApiUpdate = useDataStore((state) => state.lastApiUpdate)
   const baselineTime = useDataStore((state) => state.baselineTime)
-  const countdown = useVoteStore((state) => state.countdown)
+  const processedData = useVoteStore((s) => s.processedData)
 
-  // 🔥 local state to toggle
+  devLog('processedData', processedData)
+
+  // local state to toggle
   const [showTopOnly, setShowTopOnly] = React.useState(false)
 
   // find greatest gainer
-  const greatestGainer = Math.max(
-    ...(allParticipantsData ?? []).map((p) => p.deltaFromBaseline || 0)
-  )
+  const greatestGainer = Math.max(...(processedData ?? []).map((p) => p.delta || 0))
 
   // check if more than one participant has the top delta
   const moreThanOneGainer =
-    (allParticipantsData ?? []).filter((p) => p.deltaFromBaseline === greatestGainer).length > 1
+    (processedData ?? []).filter((p) => p.delta === greatestGainer).length > 1
 
-  // ✂️ apply slicing depending on state
-  const displayedData = showTopOnly
-    ? (allParticipantsData ?? []).slice(0, 2)
-    : (allParticipantsData ?? [])
+  // apply slicing depending on state
+  const displayedData = showTopOnly ? (processedData ?? []).slice(0, 2) : (processedData ?? [])
 
   return (
     <SectionContainer className="h-[350px] w-full max-w-sm justify-start overflow-scroll border-2 border-indigo-700 p-2">
-      {/* Toggle Button */}
-      {/* <div className="flex items-center justify-end gap-2 p-2">
-        <Label htmlFor="showTopOnly" className="text-sm">
-          {showTopOnly ? 'Show top 2 only' : 'Show all'}
-        </Label>
-        <Switch
-          id="showTopOnly"
-          checked={showTopOnly}
-          onCheckedChange={() => setShowTopOnly((prev) => !prev)}
-        />
-      </div> */}
-
-      <Header lastApiUpdate={lastApiUpdate} lastSnapshotDate={baselineTime} countdown={countdown} />
+      <Header lastApiUpdate={lastApiUpdate} lastSnapshotDate={baselineTime} />
 
       {/* Loading skeletons */}
-      {isLoading &&
+      {/* {isLoading &&
         (showTopOnly
           ? GENERAL_DETAILS.candidateNames?.slice(0, 2).map((_, i) => <HotCardSkeleton key={i} />)
-          : GENERAL_DETAILS.candidateNames?.map((_, i) => <HotCardSkeleton key={i} />))}
+          : GENERAL_DETAILS.candidateNames?.map((_, i) => <HotCardSkeleton key={i} />))} */}
 
       {/* Participant cards */}
-      {displayedData.map(({ name, src, votes, deltaFromBaseline }, index) => (
+      {processedData.map(({ name, src, votes, delta }, index) => (
         <HotCardMini
           key={name}
-          isHot={deltaFromBaseline === greatestGainer && greatestGainer > 0 && !moreThanOneGainer}
+          isHot={delta === greatestGainer && greatestGainer > 0 && !moreThanOneGainer}
           name={name}
           placement={index + 1}
           src={src}
           votes={votes}
-          gains={deltaFromBaseline}
+          gains={delta}
         />
       ))}
     </SectionContainer>

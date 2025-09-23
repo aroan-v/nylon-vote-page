@@ -6,6 +6,7 @@ import PasswordPage from '../PasswordPage'
 
 function ClientWrapper({ children }) {
   useNylonData()
+
   const addVote = useRecordedVotes((state) => state.addVote)
   React.useEffect(() => {
     const handleMessage = (event) => {
