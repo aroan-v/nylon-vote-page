@@ -7,14 +7,13 @@ import Spinner from '../Spinner'
 export default function PasswordPage({ children }) {
   const [isAuthenticated, setIsAuthenticated] = React.useState(true)
   const [passwordInput, setPasswordInput] = React.useState('')
-  const [loading, setLoading] = React.useState(true)
+  const [loading, setLoading] = React.useState(false)
   const [serverPassword, setServerPassword] = React.useState('')
 
   // 1. Fetch the current password from your backend (e.g., GitHub API)
   React.useEffect(() => {
     async function fetchPassword() {
       setLoading(false)
-      return
 
       const res = await fetch(
         'https://raw.githubusercontent.com/aroan-v/nylon-biggest-breakout-star-cache/refs/heads/main/password.json'
@@ -44,7 +43,7 @@ export default function PasswordPage({ children }) {
 
   if (loading)
     return (
-      <div className="p-4">
+      <div className="flex min-h-screen w-full items-center justify-center p-4">
         <Spinner />
       </div>
     )
