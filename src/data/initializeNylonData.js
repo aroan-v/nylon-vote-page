@@ -1,26 +1,12 @@
 import React from 'react'
-import { useDataStore } from '@/store/dataStore'
 import { GENERAL_DETAILS } from './generalDetails'
-import { useRecordedVotes } from '@/store/useRecordedVotes'
 import useVoteStore from '@/store/useVoteStore'
 import { devLog } from '@/lib/logger'
 import { findNearestIndex } from '@/lib/findNearestIndex'
 
-let lastSavedTime = null
-let latestVersion = null
-
 export function useNylonData() {
-  const setState = useDataStore((state) => state.setState)
-  const hydrate = useRecordedVotes((state) => state.hydrate)
-  const setCountdown = useVoteStore((state) => state.setCountdown)
   const setShallowState = useVoteStore((s) => s.setShallowState)
   const voteData = useVoteStore((s) => s.voteData)
-
-  const lastVoteSnapshotRef = React.useRef(null)
-  const baselineRef = React.useRef({
-    time: Date.now(),
-    votes: null,
-  })
 
   const [localData, setLocalData] = React.useState(null)
   const index = React.useRef(0)

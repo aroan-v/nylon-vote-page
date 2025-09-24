@@ -44,7 +44,7 @@ function GapHistory() {
         </TableHeader>
 
         <TableBody>
-          {visibleRows?.map((obj, index) => {
+          {visibleRows?.map((obj) => {
             return (
               <TableRow key={obj.time}>
                 <TableCell>{obj.time}</TableCell>

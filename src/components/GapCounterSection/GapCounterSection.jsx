@@ -137,7 +137,7 @@ function GapCounterSection({ useImage, className }) {
 
 export default GapCounterSection
 
-function LeadingHeader({ primaryPlayerName = 'Primary Player', enemyPlayerName = 'Enemy Player' }) {
+function LeadingHeader({ primaryPlayerName = 'Primary Player' }) {
   return (
     <p className="text-center leading-tight text-shadow-md/30">
       <strong>{primaryPlayerName}</strong> is leading{' '}

@@ -7,28 +7,36 @@ import Spinner from '../Spinner'
 export default function PasswordPage({ children }) {
   const [isAuthenticated, setIsAuthenticated] = React.useState(true)
   const [passwordInput, setPasswordInput] = React.useState('')
-  const [loading, setLoading] = React.useState(false)
+  const [loading, setLoading] = React.useState(true)
   const [serverPassword, setServerPassword] = React.useState('')
 
-  // 1. Fetch the current password from your backend (e.g., GitHub API)
+  // Fetch the current password from your backend
   React.useEffect(() => {
     async function fetchPassword() {
       setLoading(false)
 
       const res = await fetch(
         'https://raw.githubusercontent.com/aroan-v/nylon-biggest-breakout-star-cache/refs/heads/main/password.json'
-      ) // replace with your real endpoint
+      )
       const data = await res.json()
       setServerPassword(data.password)
 
-      // 2. Check if user already has valid auth in localStorage
+      // Check if user already has valid auth in localStorage
       const storedPassword = localStorage.getItem('auth_password')
       if (storedPassword && storedPassword === data.password) {
         setIsAuthenticated(true)
       }
       setLoading(false)
     }
-    fetchPassword()
+
+    const id = window.setTimeout(() => {
+      setLoading(false)
+    }, 1000)
+
+    return () => window.clearTimeout(id)
+
+    // Disabled password block for now
+    // fetchPassword()
   }, [])
 
   // 3. Handle login

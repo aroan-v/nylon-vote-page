@@ -21,9 +21,7 @@ function processVotes(votes, stateSetter, lastVotesSnapshot) {
   // Convert the votes object into an array for easier sorting and filtering
   const allParticipants = Object.entries(votes)
     .map(([name, count]) => {
-      const src = GENERAL_DETAILS.candidateProperties.find(
-        ({ name: pName, src }) => pName === name
-      ).src
+      const src = GENERAL_DETAILS.candidateProperties.find(({ name: pName }) => pName === name).src
 
       // Compute the delta from last snapshot
       let deltaFromLastSnapshot = null
@@ -95,7 +93,7 @@ function NylonVotesSection() {
     return () => {
       window.removeEventListener('message', handleMessage)
     }
-  }, [lastVotesSnapshot])
+  }, [lastVotesSnapshot, setState])
 
   return (
     <div className="hidden">

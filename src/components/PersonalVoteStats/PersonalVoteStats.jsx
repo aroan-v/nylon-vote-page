@@ -22,14 +22,6 @@ const FlashingSpan = styled.span`
   */
 `
 
-// get current date in readable format
-const today = new Date().toLocaleDateString(undefined, {
-  weekday: 'long',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-})
-
 export default function VoteStats({}) {
   const dailyRecordedVotes = useRecordedVotes((state) => state.dailyRecordedVotes)
   const totalRecordedVotes = useRecordedVotes((state) => state.totalRecordedVotes)

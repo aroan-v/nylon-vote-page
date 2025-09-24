@@ -29,7 +29,6 @@ function HotRightNowSection() {
   const lastSnapshotDate = useDataStore((state) => state.lastSnapshotDate)
   const lastApiUpdate = useDataStore((state) => state.lastApiUpdate)
   const isLoading = useDataStore((state) => state.isLoading)
-  const hasData = allParticipantsData && lastSnapshotDate && lastApiUpdate
 
   const greatestGainer = Math.max(
     ...(allParticipantsData ?? []).map((p) => p.deltaFromLastSnapshot || 0)
@@ -74,20 +73,6 @@ function Header({ lastSnapshotDate, lastApiUpdate }) {
         <FlashingSpan key={lastSnapshotDate}>{lastSnapshotDate}</FlashingSpan> to{' '}
         {/* Use the FlashingSpan component with a key */}
         <FlashingSpan key={lastApiUpdate}>{lastApiUpdate}</FlashingSpan> (PH Time)
-      </span>
-    </p>
-  )
-}
-
-function HeaderSkeleton() {
-  return (
-    <p className="p-6 pt-0 text-center italic">
-      The person with <span className="font-bold text-red-500">Top Gainer</span> gained{' '}
-      <span className="text-nowrap">
-        the most votes from {/* Skeleton for lastSnapshotDate */}
-        <span className="mx-1 inline-block h-4 w-15 rounded bg-gray-300" />
-        to {/* Skeleton for lastApiUpdate */}
-        <span className="mx-1 inline-block h-4 w-15 rounded bg-gray-300" />
       </span>
     </p>
   )

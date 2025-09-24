@@ -39,6 +39,7 @@ const eslintConfig = [
   // ✅ Unused imports
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
+    ignores: ['src/legacy/**'],
     plugins: {
       'unused-imports': unusedImports,
     },

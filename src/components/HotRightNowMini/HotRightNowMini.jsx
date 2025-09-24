@@ -35,18 +35,12 @@ function HotRightNowMini() {
 
   devLog('processedData', processedData)
 
-  // local state to toggle
-  const [showTopOnly, setShowTopOnly] = React.useState(false)
-
   // find greatest gainer
   const greatestGainer = Math.max(...(processedData ?? []).map((p) => p.delta || 0))
 
   // check if more than one participant has the top delta
   const moreThanOneGainer =
     (processedData ?? []).filter((p) => p.delta === greatestGainer).length > 1
-
-  // apply slicing depending on state
-  const displayedData = showTopOnly ? (processedData ?? []).slice(0, 2) : (processedData ?? [])
 
   return (
     <SectionContainer className="max-h-[400px] min-h-[350px] w-full max-w-sm justify-start overflow-scroll border-3 border-indigo-700 p-2">
@@ -75,7 +69,7 @@ function HotRightNowMini() {
 
 export default HotRightNowMini
 
-function Header({ lastSnapshotDate, lastApiUpdate, countdown = '' }) {
+function Header({ lastSnapshotDate }) {
   return (
     <p className="pt-0 text-center text-sm italic">
       Showing 5-minute vote snapshots every 3 seconds
@@ -89,20 +83,6 @@ function Header({ lastSnapshotDate, lastApiUpdate, countdown = '' }) {
         the most votes from {/* Use the FlashingSpan component with a key */}
         <FlashingSpan key={lastSnapshotDate}>{lastSnapshotDate}</FlashingSpan> to{' '}
         {/* Use the FlashingSpan component with a key */}
-      </span>
-    </p>
-  )
-}
-
-function HeaderSkeleton() {
-  return (
-    <p className="p-6 pt-0 text-center italic">
-      The person with <span className="font-bold text-red-500">Top Gainer</span> gained{' '}
-      <span className="text-nowrap">
-        the most votes from {/* Skeleton for lastSnapshotDate */}
-        <span className="mx-1 inline-block h-4 w-15 rounded bg-gray-300" />
-        to {/* Skeleton for lastApiUpdate */}
-        <span className="mx-1 inline-block h-4 w-15 rounded bg-gray-300" />
       </span>
     </p>
   )

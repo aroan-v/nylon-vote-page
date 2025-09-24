@@ -60,7 +60,6 @@ function TotalVotesSection({ useImage, className }) {
   let isPrimaryPlayerLeading = useDataStore((state) => state.isPrimaryPlayerLeading)
   const primaryPlayerDisplayName = useDataStore((state) => state.primaryPlayerDisplayName)
   const enemyPlayerDisplayName = useDataStore((state) => state.enemyPlayerDisplayName)
-  let gapBetweenPrimaryAndEnemy = useDataStore((state) => state.gapBetweenPrimaryAndEnemy)
 
   const isLoading = false
   isPrimaryPlayerLeading = true
@@ -129,7 +128,7 @@ function TotalVotesSection({ useImage, className }) {
 
 export default TotalVotesSection
 
-function LeadingHeader({ primaryPlayerName = 'Primary Player', enemyPlayerName = 'Enemy Player' }) {
+function LeadingHeader() {
   return <p className="text-center leading-tight text-shadow-md/30">We sent</p>
 }
 

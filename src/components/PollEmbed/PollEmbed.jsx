@@ -19,7 +19,7 @@ export default function PollEmbed({ remountKey, scale = 1 }) {
 
   return (
     <div
-      className="overflow-hidden border bg-sky-800/50 bg-teal-800/30"
+      className="overflow-hidden border bg-teal-800/30"
       style={{
         width: `${size.width * scale}px`,
         height: `${size.height * scale}px`,
