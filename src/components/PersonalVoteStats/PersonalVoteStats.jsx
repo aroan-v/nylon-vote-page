@@ -35,7 +35,7 @@ export default function VoteStats({}) {
   const totalRecordedVotes = useRecordedVotes((state) => state.totalRecordedVotes)
 
   return (
-    <Card className="max-h-[400px] min-h-[350px] w-full max-w-sm gap-4 overflow-y-scroll rounded-xl border-3 border-sky-400 bg-none">
+    <Card className="max-h-[400px] min-h-[350px] w-full max-w-sm justify-center gap-4 overflow-y-scroll rounded-xl border-3 border-sky-400 bg-none">
       {/* Header */}
       <CardHeader className="flex flex-col items-center justify-center gap-2">
         <div className="mx-auto w-[150px]">

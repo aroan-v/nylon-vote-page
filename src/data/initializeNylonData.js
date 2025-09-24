@@ -45,11 +45,7 @@ export function useNylonData() {
 
     const intervalId = window.setInterval(() => {
       // Increment the index by 1 as long as it hasn't exceeded the length
-      if (index.current < localData.times.length - 1 && index.current !== 0) {
-        index.current = index.current + 1
-      } else {
-        index.current = 0
-      }
+      index.current = (index.current + 1) % localData.times.length
 
       HandleData({
         currentIndex: index.current,

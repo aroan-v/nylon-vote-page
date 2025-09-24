@@ -10,6 +10,7 @@ import { GENERAL_DETAILS } from '@/data/generalDetails'
 const StyledWrapper = styled.div`
   width: 100%;
   max-width: 24rem;
+  height: 100%;
 
   .card {
     --white: hsl(0, 0%, 100%);
@@ -72,7 +73,7 @@ function GapCounterSection({ useImage, className }) {
     <StyledWrapper>
       <div
         className={cn(
-          'card max-w-sm p-6',
+          'card max-w-sm p-3',
           isLoading
             ? 'loading' // new case: while null/loading
             : isPrimaryPlayerLeading
@@ -82,7 +83,7 @@ function GapCounterSection({ useImage, className }) {
         )}
       >
         {useImage && (
-          <div className="relative flex flex-1 items-center justify-center overflow-visible">
+          <div className="relative flex flex-1 items-center justify-center overflow-visible p-2">
             <div className="animate-short-bounce">
               {!isLoading && (
                 <Image
@@ -98,7 +99,7 @@ function GapCounterSection({ useImage, className }) {
             </div>
           </div>
         )}
-        <div className="flex flex-3 flex-col justify-center">
+        <div className="flex flex-3 flex-col justify-center px-2">
           <HeaderWrapper
             isLoading={isLoading}
             primaryPlayerDisplayName={primaryPlayerDisplayName}
@@ -112,10 +113,10 @@ function GapCounterSection({ useImage, className }) {
                 <NumberFlow
                   plugins={[continuous]}
                   style={{
-                    color: '#ffffff', // Tailwind's gray-600 equivalent
-                    fontSize: '2.5rem', // Tailwind's text-xl equivalent (20px)
+                    color: '#ffffff',
+                    fontSize: '2.5rem',
                     fontWeight: '700',
-                    fontVariantNumeric: 'tabular-nums', // this enforces fixed-width digits
+                    fontVariantNumeric: 'tabular-nums',
                   }}
                   value={gapBetweenPrimaryAndEnemy}
                 />

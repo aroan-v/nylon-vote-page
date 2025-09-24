@@ -6,8 +6,6 @@ import PersonalVoteStats from '@/components/PersonalVoteStats'
 import GapCounterSection from '@/components/GapCounterSection'
 import HotRightNowMini from '@/components/HotRightNowMini'
 import React from 'react'
-import ToggleButton from '@/components/ToggleButton'
-import TotalVotesSection from '@/components/TotalVotesSection'
 
 const instantFlash = keyframes`
   0% { color: white; }
@@ -27,66 +25,19 @@ const FlashingSpan = styled.span`
 `
 
 export default function VotePage() {
-  const allParticipantsData = useDataStore((state) => state.allParticipantsData)
-  const lastSnapshotDate = useDataStore((state) => state.lastSnapshotDate)
-  const lastApiUpdate = useDataStore((state) => state.lastApiUpdate)
-  const hasData = allParticipantsData && lastSnapshotDate && lastApiUpdate
-  const recordedVotes = useDataStore((state) => state.recordedVotes)
-  const [showGapCounter, setShowGapCounter] = React.useState(false)
-  const [showHotRightNow, seShowHotRightNow] = React.useState(false)
-
   return (
-    <div className="r mx-auto grid justify-items-center gap-6 lg:max-w-7xl lg:grid-cols-3">
+    <div className="r mx-auto grid justify-items-center gap-6 lg:w-fit lg:grid-cols-3">
       <PersonalVoteStats />
+
       <div className="flex max-h-[400px] min-h-[350px] flex-col gap-6">
         <GapCounterSection useImage={true} />
         <VoteDashboardCard />
       </div>
 
       <HotRightNowMini />
-
       <div className="col-span-full w-full">
         <VotingSection />
       </div>
-    </div>
-  )
-
-  return (
-    <div className="flex flex-col items-center space-y-8">
-      <div className="flex w-full flex-wrap justify-center gap-8">
-        <PersonalVoteStats />
-        <div className="flex h-[350px] max-w-sm flex-col space-y-6 overflow-hidden">
-          {/* Gap counter section */}
-          <TotalVotesSection useImage={true} />
-
-          {/* Scrollable instructions container */}
-          <div className="bg-card/50 flex-sh w-full flex-1 overflow-auto rounded-xl border-2 border-blue-500 p-4">
-            <div className="flex flex-col gap-4">
-              {/* Voting instructions card */}
-              <h2 className="text-md text-center font-bold text-gray-900 dark:text-gray-100">
-                Voting Guide
-              </h2>
-              <ul className="list-inside list-decimal space-y-2 text-sm text-gray-700 dark:text-gray-300">
-                <li>
-                  Vote 5 times, then switch to a different browser (e.g., Chrome, Firefox, Safari).
-                </li>
-                <li>Votes without answered math questions aren’t counted.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <VoteDashboardCard />
-        <HotRightNowMini />
-      </div>
-      <div className="flex flex-col items-center space-y-4">
-        <div className="">
-          <ToggleButton />
-        </div>
-        <VotingSection />
-      </div>
-
-      <Attribution />
     </div>
   )
 }
@@ -106,7 +57,7 @@ function VoteDashboardCard() {
         href="https://nylon-boldest-breakout-star-will.vercel.app"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 px-2 py-2 text-lg font-semibold text-black shadow-md transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,215,0,0.7)]"
+        className="inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-yellow-400 to-amber-500 px-2 py-2 text-lg font-semibold text-black shadow-md transition-all duration-300 hover:scale-102 hover:shadow-[0_0_20px_rgba(255,215,0,0.7)]"
       >
         View Dashboard
         <svg

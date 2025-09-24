@@ -3,8 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Poll</title>
-  </head>
   <body>
+
+
+
     <script>
       // MutationObserver ready before Polldaddy script
       const observer = new MutationObserver((mutations) => {
@@ -141,5 +143,6 @@
       window.addEventListener('load', reportSize)
       new ResizeObserver(reportSize).observe(document.body)
     </script>
+    
   </body>
 </html>

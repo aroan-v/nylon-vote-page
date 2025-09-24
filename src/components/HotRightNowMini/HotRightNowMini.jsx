@@ -79,7 +79,9 @@ export default HotRightNowMini
 
 function Header({ lastSnapshotDate, lastApiUpdate, countdown = '' }) {
   return (
-    <p className="pt-0 text-center text-sm italic">Tracking votes gained at random intervals.</p>
+    <p className="pt-0 text-center text-sm italic">
+      Showing 5-minute vote snapshots every 3 seconds
+    </p>
   )
 
   return (

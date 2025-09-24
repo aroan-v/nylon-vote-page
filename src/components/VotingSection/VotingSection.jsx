@@ -76,11 +76,7 @@ function ScaleControls({ scale, increment, decrement, setRefreshKey, refreshKey 
       {/* Scale controls */}
 
       <div className="flex items-center gap-2">
-        <Button
-          onClick={decrement}
-          variant="outline"
-          className="h-10 w-10 rounded-lg border-neutral-700 bg-neutral-800 text-lg text-white transition-colors duration-200 hover:bg-neutral-700"
-        >
+        <Button onClick={decrement} variant="outline">
           -
         </Button>
         <div className="flex flex-col text-center">
@@ -91,11 +87,7 @@ function ScaleControls({ scale, increment, decrement, setRefreshKey, refreshKey 
             {(scale * 100).toFixed(0)}%
           </span>
         </div>
-        <Button
-          onClick={increment}
-          variant="outline"
-          className="h-10 w-10 rounded-lg border-neutral-700 bg-neutral-800 text-lg text-white transition-colors duration-200 hover:bg-neutral-700"
-        >
+        <Button onClick={increment} variant="outline">
           +
         </Button>
       </div>
@@ -110,7 +102,6 @@ function ScaleControls({ scale, increment, decrement, setRefreshKey, refreshKey 
           setRefreshKey(Date.now())
         }}
         variant="outline"
-        className="rounded-lg border-neutral-700 bg-neutral-800 px-4 py-2 text-white transition-colors duration-200 hover:bg-neutral-700"
       >
         <span className="flex items-center gap-2">
           Refresh Polls
