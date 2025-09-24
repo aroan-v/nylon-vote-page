@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
-import { HeartIcon, ChartLineUpIcon, ChartPieIcon } from '@phosphor-icons/react'
+import { HeartIcon, ChartLineUpIcon } from '@phosphor-icons/react'
 import { useRecordedVotes } from '@/store/useRecordedVotes'
 import styled, { keyframes } from 'styled-components'
 import Image from 'next/image'

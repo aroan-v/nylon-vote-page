@@ -1,5 +1,4 @@
 'use client'
-import { useDataStore } from '@/store/dataStore'
 import styled, { keyframes } from 'styled-components'
 import VotingSection from '@/components/VotingSection'
 import PersonalVoteStats from '@/components/PersonalVoteStats'
@@ -26,19 +25,19 @@ const FlashingSpan = styled.span`
 
 export default function VotePage() {
   return (
-    <div className="r mx-auto grid justify-items-center gap-6 lg:w-fit lg:grid-cols-3">
-      <PersonalVoteStats />
+    <>
+      <section className="r mx-auto grid justify-items-center gap-6 lg:w-fit lg:grid-cols-3">
+        <PersonalVoteStats />
 
-      <div className="flex max-h-[400px] min-h-[350px] flex-col gap-6">
-        <GapCounterSection useImage={true} />
-        <VoteDashboardCard />
-      </div>
+        <div className="flex max-h-[400px] min-h-[350px] flex-col gap-6">
+          <GapCounterSection useImage={true} />
+          <VoteDashboardCard />
+        </div>
 
-      <HotRightNowMini />
-      <div className="col-span-full w-full">
-        <VotingSection />
-      </div>
-    </div>
+        <HotRightNowMini />
+      </section>
+      <VotingSection />
+    </>
   )
 }
 

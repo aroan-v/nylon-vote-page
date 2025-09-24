@@ -73,7 +73,7 @@ function GapCounterSection({ useImage, className }) {
     <StyledWrapper>
       <div
         className={cn(
-          'card max-w-sm p-3',
+          'card h-full max-w-sm p-3',
           isLoading
             ? 'loading' // new case: while null/loading
             : isPrimaryPlayerLeading
@@ -88,7 +88,7 @@ function GapCounterSection({ useImage, className }) {
               {!isLoading && (
                 <Image
                   src={isPrimaryPlayerLeading ? '/will-lead.png' : '/will-lose.png'}
-                  alt="Will Ashley Sticker"
+                  alt="A cutout photo of Will Ashley"
                   width={887}
                   height={1114}
                   sizes="(max-width: 640px) 120px, (max-width: 1024px) 160px, 200px"

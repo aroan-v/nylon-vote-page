@@ -1,4 +1,3 @@
-import { devLog } from './logger'
 import { roundToNearest5Minutes } from './roundToNearestFiveMinutes'
 
 export function findNearestIndex({ timestamps, currentDate }) {

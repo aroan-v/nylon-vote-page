@@ -1,12 +1,9 @@
 import React from 'react'
 import SectionContainer from '../SectionContainer'
 import styled, { keyframes } from 'styled-components'
-import { HotCard } from '../HotRightNowSection'
 import HotCardMini from '../HotCardMini'
 import { HotCardSkeleton } from '../HotRightNowSection'
-import { Label } from '../ui/label'
 import useVoteStore from '@/store/useVoteStore'
-import { Switch } from '../ui/switch'
 
 const instantFlash = keyframes`
   0% { color: white; }
@@ -60,13 +57,14 @@ function HotRightNowMini() {
 
       {/* Participant cards */}
       {!isLoading &&
-        processedData.map(({ name, src, votes, delta }, index) => (
+        processedData.map(({ name, src, alt, votes, delta }, index) => (
           <HotCardMini
             key={name}
             isHot={delta === greatestGainer && greatestGainer > 0 && !moreThanOneGainer}
             name={name}
             placement={index + 1}
             src={src}
+            alt={alt}
             votes={votes}
             gains={delta}
           />

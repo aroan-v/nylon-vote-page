@@ -29,7 +29,6 @@ export function useNylonDataMini() {
   }, [addVote])
 
   React.useEffect(() => {
-    console.log('initializeData mounted')
     const intervals = {}
 
     // --- utility: start polling ---

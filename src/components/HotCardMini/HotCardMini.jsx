@@ -3,9 +3,7 @@ import NumberFlowContainer from '../NumberFlowContainer'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
-function HotCardMini({ isHot, votes, name, placement, src, gains }) {
-  const [numbers, setNumbers] = React.useState(0)
-
+function HotCardMini({ isHot, votes, name, alt, placement, src, gains }) {
   return (
     <div
       className={cn(
@@ -17,7 +15,7 @@ function HotCardMini({ isHot, votes, name, placement, src, gains }) {
         <div className="h-full">
           <Image
             src={src}
-            alt="Hero banner"
+            alt={alt}
             width={2048}
             height={2560}
             sizes="100px"

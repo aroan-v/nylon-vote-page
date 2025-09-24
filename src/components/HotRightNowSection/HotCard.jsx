@@ -3,7 +3,7 @@ import NumberFlowContainer from '../NumberFlowContainer'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
-function HotCard({ isHot, votes, name, placement, src, gains }) {
+function HotCard({ isHot, votes, name, placement, src, alt, gains }) {
   return (
     <div
       className={cn(
@@ -15,7 +15,7 @@ function HotCard({ isHot, votes, name, placement, src, gains }) {
         <div className="h-full">
           <Image
             src={src}
-            alt="Hero banner"
+            alt={alt}
             width={2048}
             height={2560}
             sizes="100px"

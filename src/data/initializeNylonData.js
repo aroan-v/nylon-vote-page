@@ -1,10 +1,6 @@
 import React from 'react'
-import { API } from './api'
-import fetcher from '@/lib/fetcher'
 import { useDataStore } from '@/store/dataStore'
 import { GENERAL_DETAILS } from './generalDetails'
-import getPhTime from '@/lib/getPhTime'
-import { convertToPhTime } from '@/lib/convertToPhTime'
 import { useRecordedVotes } from '@/store/useRecordedVotes'
 import useVoteStore from '@/store/useVoteStore'
 import { devLog } from '@/lib/logger'
@@ -114,10 +110,12 @@ function ProcessParticipantsData({ currentData, currentDelta }) {
       )
 
       const src = candidate ? candidate.src : null
+      const alt = candidate ? candidate.alt : `Nylon poster of ${name} `
 
       return {
         name,
         src,
+        alt,
         votes,
         delta: currentDelta[name] || 0,
       }
