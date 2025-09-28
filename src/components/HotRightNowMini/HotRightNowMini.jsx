@@ -1,27 +1,8 @@
 import React from 'react'
 import SectionContainer from '../SectionContainer'
-import styled, { keyframes } from 'styled-components'
 import HotCardMini from '../HotCardMini'
 import { HotCardSkeleton } from '../HotRightNowSection'
 import useVoteStore from '@/store/useVoteStore'
-
-const instantFlash = keyframes`
-  0% { color: white; }
-  1% { color: cyan; } /* Instant jump to orange */
-  99% { color: cyan; } /* Hold orange for almost the entire duration */
-  100% { color: white; } /* Instant return to white */
-`
-
-// Create the styled component with the new keyframes and timing
-const FlashingSpan = styled.span`
-  display: inline-block;
-  font-weight: 700;
-  animation: ${instantFlash} 1.5s steps(1) forwards;
-  /* 2.5s duration (2s hold + 0.5s for the instant on/off)
-    steps(1) makes the animation jump to the next keyframe instantly
-    forwards keeps the final state until the animation is re-triggered
-  */
-`
 
 import { useDataStore } from '@/store/dataStore'
 import { GENERAL_DETAILS } from '@/data/generalDetails'
@@ -69,21 +50,10 @@ function HotRightNowMini() {
 
 export default HotRightNowMini
 
-function Header({ lastSnapshotDate }) {
+function Header({}) {
   return (
     <p className="pt-0 text-center text-sm italic">
       Showing 5-minute vote snapshots every 3 seconds
-    </p>
-  )
-
-  return (
-    <p className="p-6 pt-0 text-center italic">
-      Tracking votes every 2 mins. <span className="font-bold text-red-500">Top Gainer</span> gained{' '}
-      <span className="text-nowrap">
-        the most votes from {/* Use the FlashingSpan component with a key */}
-        <FlashingSpan key={lastSnapshotDate}>{lastSnapshotDate}</FlashingSpan> to{' '}
-        {/* Use the FlashingSpan component with a key */}
-      </span>
     </p>
   )
 }
